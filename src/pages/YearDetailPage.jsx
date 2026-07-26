@@ -100,22 +100,20 @@ export default function YearDetailPage() {
           <div className="flex p-1 rounded-2xl bg-slate-100 dark:bg-gray-800 border border-slate-200 dark:border-gray-700 w-full sm:w-auto">
             <button
               onClick={() => setActiveTab('lessons')}
-              className={`flex-1 sm:flex-none px-6 py-2.5 rounded-xl font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 ${
-                activeTab === 'lessons'
-                  ? 'bg-dodger-600 text-white shadow-md'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-dodger-600'
-              }`}
+              className={`flex-1 sm:flex-none px-6 py-2.5 rounded-xl font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 ${activeTab === 'lessons'
+                ? 'bg-dodger-600 text-white shadow-md'
+                : 'text-gray-600 dark:text-gray-300 hover:text-dodger-600'
+                }`}
             >
               <BookOpen className="w-5 h-5" />
               <span>دروس المنهج ({yearLessons.length})</span>
             </button>
             <button
               onClick={() => setActiveTab('exams')}
-              className={`flex-1 sm:flex-none px-6 py-2.5 rounded-xl font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 ${
-                activeTab === 'exams'
-                  ? 'bg-dodger-600 text-white shadow-md'
-                  : 'text-gray-600 dark:text-gray-300 hover:text-dodger-600'
-              }`}
+              className={`flex-1 sm:flex-none px-6 py-2.5 rounded-xl font-bold text-sm sm:text-base transition flex items-center justify-center gap-2 ${activeTab === 'exams'
+                ? 'bg-dodger-600 text-white shadow-md'
+                : 'text-gray-600 dark:text-gray-300 hover:text-dodger-600'
+                }`}
             >
               <FileText className="w-5 h-5" />
               <span>امتحانات المحافظات ({yearExams.length})</span>
@@ -138,15 +136,15 @@ export default function YearDetailPage() {
       {loading ? (
         <div className="text-center py-20 font-bold text-dodger-600 flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin" />
-          <span>جاري تحميل الدروس مباشرة من Supabase...</span>
+          <span>جاري تحميل الدروس</span>
         </div>
       ) : activeTab === 'lessons' ? (
         <div className="space-y-6">
           {filteredLessons.length === 0 ? (
             <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-2xl border border-dashed border-slate-300 dark:border-gray-700 text-gray-500 space-y-3">
               <BookOpen className="w-12 h-12 mx-auto text-gray-400" />
-              <p className="font-bold text-lg">لا توجد دروس مضافة لهذا الصف بعد في Supabase</p>
-              <p className="text-xs text-gray-400">يمكنك إضافة دروس جديدة فوراً من لوحة تحكم الأدمن!</p>
+              <p className="font-bold text-lg">لا توجد دروس مضافة لهذا الصف</p>
+
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -189,7 +187,7 @@ export default function YearDetailPage() {
           {filteredExams.length === 0 ? (
             <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-2xl border border-dashed border-slate-300 text-gray-500">
               <FileText className="w-12 h-12 mx-auto text-gray-400 mb-3" />
-              <p className="font-bold text-lg">لا توجد امتحانات سابقة مضافة لهذا الصف بعد في Supabase</p>
+              <p className="font-bold text-lg">لا توجد امتحانات سابقة مضافة لهذا الصف بعد</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
