@@ -3,12 +3,14 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import { Play, Download, CheckCircle, HelpCircle, MessageSquare, Send, Sparkles, ShieldAlert, Loader2 } from 'lucide-react'
-import { fetchLessonByIdFromSupabase } from '../lib/supabase'
+import { fetchLessonByIdFromSupabase, supabase } from '../lib/supabase'
+import ProtectedVideoPlayer from '../components/ProtectedVideoPlayer'
 
 export default function LessonDetailPage() {
   const { lessonId } = useParams()
   const [lesson, setLesson] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [studentInfo, setStudentInfo] = useState({ name: 'طالب المنصة', phone: '01xxxxxxxxx' })
 
   // Quiz state
   const [userAnswers, setUserAnswers] = useState({})
@@ -20,13 +22,40 @@ export default function LessonDetailPage() {
   const [newComment, setNewComment] = useState('')
 
   useEffect(() => {
-    async function loadLesson() {
+    async function loadLessonAndUser() {
       setLoading(true)
       const data = await fetchLessonByIdFromSupabase(lessonId)
       setLesson(data)
+
+      // Get logged in student profile for watermark protection
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session?.user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('full_name, phone')
+            .eq('id', session.user.id)
+            .single()
+
+          if (profile) {
+            setStudentInfo({
+              name: profile.full_name || session.user.email,
+              phone: profile.phone || 'طالب مفعّل',
+            })
+          } else {
+            setStudentInfo({
+              name: session.user.email || 'طالب المنصة',
+              phone: '01xxxxxxxxx',
+            })
+          }
+        }
+      } catch (err) {
+        console.log('Error fetching user info for watermark:', err)
+      }
+
       setLoading(false)
     }
-    loadLesson()
+    loadLessonAndUser()
   }, [lessonId])
 
   const handleOptionSelect = (qId, optionIdx) => {
@@ -116,21 +145,12 @@ export default function LessonDetailPage() {
           </h1>
         </div>
 
-        {/* Video Player Wrapper (Non-downloadable protection) */}
-        <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-black shadow-2xl border border-gray-800">
-          <iframe
-            className="w-full h-full"
-            src={`${lesson.videoUrl}?autoplay=0&rel=0&modestbranding=1`}
-            title={lesson.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-
-          <div className="absolute top-3 left-3 pointer-events-none bg-black/70 backdrop-blur-md px-3 py-1.5 rounded-xl text-[11px] font-bold text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
-            <span>محتوى محمي - مشاهدة مباشرة فقط</span>
-          </div>
-        </div>
+        {/* Video Player Wrapper (Protected Custom HTML5 Player - No iframe) */}
+        <ProtectedVideoPlayer
+          videoUrl={lesson.videoUrl}
+          title={lesson.title}
+          studentInfo={studentInfo}
+        />
 
         {/* Lesson Description & Material Downloads */}
         <div className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-gray-700/70 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">

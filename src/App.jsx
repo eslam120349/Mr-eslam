@@ -64,6 +64,57 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  // Global Anti-Right-Click & Anti-DevTools keyboard shortcuts lock
+  useEffect(() => {
+    const handleGlobalContextMenu = (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      return false
+    }
+
+    const handleGlobalKeyDown = (e) => {
+      const key = e.key
+      const code = e.keyCode || e.which
+
+      // Block F12, F11
+      if (code === 123 || key === 'F12' || code === 122 || key === 'F11') {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+
+      // Block Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+      if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        (key === 'I' || key === 'i' || key === 'J' || key === 'j' || key === 'C' || key === 'c')
+      ) {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+
+      // Block Ctrl+U (View Source), Ctrl+S (Save Page)
+      if (e.ctrlKey && (key === 'u' || key === 'U' || key === 's' || key === 'S')) {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+    }
+
+    window.addEventListener('contextmenu', handleGlobalContextMenu, true)
+    document.addEventListener('contextmenu', handleGlobalContextMenu, true)
+    window.addEventListener('keydown', handleGlobalKeyDown, true)
+    document.addEventListener('keydown', handleGlobalKeyDown, true)
+
+    return () => {
+      window.removeEventListener('contextmenu', handleGlobalContextMenu, true)
+      document.removeEventListener('contextmenu', handleGlobalContextMenu, true)
+      window.removeEventListener('keydown', handleGlobalKeyDown, true)
+      document.removeEventListener('keydown', handleGlobalKeyDown, true)
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <ScrollToTop />

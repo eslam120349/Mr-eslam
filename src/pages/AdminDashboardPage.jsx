@@ -493,7 +493,7 @@ export default function AdminDashboardPage() {
 
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                      رابط الفيديو الخارجي (Embed YouTube / Vimeo / Supabase Video Link) 🔒
+                      رابط الفيديو المحمي (Google Drive / YouTube / MP4 Direct Link) 🔒
                     </label>
                     <input
                       type="url"
