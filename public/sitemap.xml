@@ -3,7 +3,7 @@
 
   <!-- الصفحة الرئيسية -->
   <url>
-    <loc>https://www.mrislam.com/</loc>
+    <loc>https://mreslam.cc.cd/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- صفحة تسجيل الدخول -->
   <url>
-    <loc>https://www.mrislam.com/login</loc>
+    <loc>https://mreslam.cc.cd/login</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -19,7 +19,7 @@
 
   <!-- صفحة التسجيل -->
   <url>
-    <loc>https://www.mrislam.com/register</loc>
+    <loc>https://mreslam.cc.cd/register</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -27,7 +27,7 @@
 
   <!-- صفحة الامتحانات السابقة -->
   <url>
-    <loc>https://www.mrislam.com/exams</loc>
+    <loc>https://mreslam.cc.cd/exams</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
