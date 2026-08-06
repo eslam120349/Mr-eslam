@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://www.mrislam.com/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- صفحة تسجيل الدخول -->
+  <url>
+    <loc>https://www.mrislam.com/login</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- صفحة التسجيل -->
+  <url>
+    <loc>https://www.mrislam.com/register</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- صفحة الامتحانات السابقة -->
+  <url>
+    <loc>https://www.mrislam.com/exams</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

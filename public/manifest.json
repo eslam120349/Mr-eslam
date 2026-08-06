@@ -1,0 +1,22 @@
+{
+  "name": "مستر اسلام | تأسيس وشرح ماث Math",
+  "short_name": "مستر اسلام",
+  "description": "منصة مستر اسلام المتخصصة في شرح وتأسيس ماث Math لطلاب باكالوريا مصري ونظام البكالوريا المصري",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "ar",
+  "theme_color": "#1a4d80",
+  "background_color": "#f8fafc",
+  "icons": [
+    {
+      "src": "/1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "math"],
+  "scope": "/"
+}

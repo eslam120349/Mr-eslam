@@ -1,0 +1,38 @@
+{
+  "rewrites": [
+    { "source": "/((?!api|_next|static|sitemap\\.xml|robots\\.txt|manifest\\.json|favicon\\.ico|apple-touch-icon\\.png|1\\.png|MRV1\\.jpeg|MRV1\\.png|MRV2\\.jpeg|BingSiteAuth\\.xml).*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/manifest+json" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ],
+  "trailingSlash": false,
+  "cleanUrls": true
+}

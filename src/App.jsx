@@ -15,6 +15,7 @@ import YearDetailPage from './pages/YearDetailPage.jsx'
 import LessonDetailPage from './pages/LessonDetailPage.jsx'
 import PastExamsPage from './pages/PastExamsPage.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
 
 // Helper component to scroll to top on route change
 function ScrollToTop() {
@@ -55,8 +56,8 @@ function AnimatedRoutes() {
               </ProtectedAdminRoute>
             }
           />
-          {/* Catch all fallback */}
-          <Route path="*" element={<HomePage />} />
+          {/* 404 - صفحة مش موجودة */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

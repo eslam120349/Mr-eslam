@@ -1,0 +1,10 @@
+# robots.txt for mrislam.com
+# https://www.mrislam.com/
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.mrislam.com/sitemap.xml
