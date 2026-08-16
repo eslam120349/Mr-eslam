@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- الصفحة الرئيسية -->
   <url>
     <loc>https://mreslam.cc.cd/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- صفحة تسجيل الدخول -->
-  <url>
-    <loc>https://mreslam.cc.cd/login</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- صفحة التسجيل -->
-  <url>
-    <loc>https://mreslam.cc.cd/register</loc>
-    <lastmod>2026-08-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- صفحة الامتحانات السابقة -->
   <url>
     <loc>https://mreslam.cc.cd/exams</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
