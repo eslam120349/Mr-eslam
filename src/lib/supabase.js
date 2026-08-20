@@ -297,6 +297,77 @@ export async function toggleStudentActiveInSupabase(id, currentStatus) {
 
   if (error) throw error
 }
+// ----------------------------------------------------------------------
+// BOOKS API
+// ----------------------------------------------------------------------
+
+export async function fetchBooksFromSupabase() {
+  if (!isSupabaseConfigured()) return []
+
+  try {
+    const { data, error } = await supabase
+      .from('books')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) throw error
+
+    return data || []
+  } catch (err) {
+    console.error('Error fetching books:', err)
+    return []
+  }
+}
+
+export async function createBookInSupabase(bookData) {
+  const payload = {
+    title: bookData.title,
+    description: bookData.description || null,
+    grade: bookData.grade || null,
+    subject: bookData.subject || null,
+    cover_url: bookData.coverUrl || null,
+    drive_id: bookData.driveId,
+  }
+
+  const { data, error } = await supabase
+    .from('books')
+    .insert([payload])
+    .select()
+
+  if (error) throw error
+
+  return data?.[0]
+}
+
+export async function updateBookInSupabase(id, bookData) {
+  const payload = {
+    title: bookData.title,
+    description: bookData.description || null,
+    grade: bookData.grade || null,
+    subject: bookData.subject || null,
+    cover_url: bookData.coverUrl || null,
+    drive_id: bookData.driveId,
+  }
+
+  const { data, error } = await supabase
+    .from('books')
+    .update(payload)
+    .eq('id', id)
+    .select()
+
+  if (error) throw error
+
+  return data?.[0]
+}
+
+export async function deleteBookFromSupabase(id) {
+  const { error } = await supabase
+    .from('books')
+    .delete()
+    .eq('id', id)
+
+  if (error) throw error
+}
 
 // SQL Schema Export
 export const SUPABASE_SQL_SCHEMA = `

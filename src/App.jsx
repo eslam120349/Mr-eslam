@@ -16,6 +16,8 @@ import LessonDetailPage from './pages/LessonDetailPage.jsx'
 import PastExamsPage from './pages/PastExamsPage.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
+import Books from "./pages/Books";
+import BookReader from "./pages/BookReader";
 
 // Helper component to scroll to top on route change
 function ScrollToTop() {
@@ -48,6 +50,8 @@ function AnimatedRoutes() {
           <Route path="/years/:yearId" element={<YearDetailPage />} />
           <Route path="/lessons/:lessonId" element={<LessonDetailPage />} />
           <Route path="/exams" element={<PastExamsPage />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/books/:id" element={<BookReader />} />
           <Route
             path="/admin"
             element={
