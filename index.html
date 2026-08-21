@@ -42,6 +42,8 @@
 
   <meta property="og:type" content="website" />
 
+  <meta property="og:site_name" content="MReslam" />
+
   <meta
     property="og:url"
     content="https://mreslam.cc.cd/"
@@ -83,38 +85,44 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "مستر اسلام",
-    "description": "مدرس ماث Math متخصص في تأسيس وشرح مناهج الرياضيات باللغة الإنجليزية لطلاب نظام البكالوريا المصري والثانوية العامة.",
-    "url": "https://mreslam.cc.cd/",
-    "image": "https://res.cloudinary.com/dc9jmzfbk/image/upload/v1747405557/dz5dwoqsyiqyjvfboidd.png",
-    "knowsAbout": [
-      "Math",
-      "Mathematics",
-      "Algebra",
-      "Geometry",
-      "Calculus",
-      "Statistics",
-      "باكالوريا مصري",
-      "نظام البكالوريا المصري",
-      "الثانوية العامة"
-    ],
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "مدرس ماث Math"
-    }
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mreslam.cc.cd/#person",
+        "name": "مستر اسلام",
+        "description": "مدرس ماث Math متخصص في تأسيس وشرح مناهج الرياضيات باللغة الإنجليزية لطلاب نظام البكالوريا المصري والثانوية العامة.",
+        "url": "https://mreslam.cc.cd/",
+        "image": "https://res.cloudinary.com/dc9jmzfbk/image/upload/v1747405557/dz5dwoqsyiqyjvfboidd.png",
+        "knowsAbout": [
+          "Math",
+          "Mathematics",
+          "Algebra",
+          "Geometry",
+          "Calculus",
+          "Statistics",
+          "البكالوريا المصرية",
+          "نظام البكالوريا المصري",
+          "الثانوية العامة"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "مدرس ماث Math"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mreslam.cc.cd/#website",
+        "name": "MReslam",
+        "alternateName": [
+          "Mr Eslam",
+          "مستر اسلام"
+        ],
+        "url": "https://mreslam.cc.cd/",
+        "inLanguage": "ar"
+      }
+    ]
   }
   </script>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "MReslam",
-  "alternateName": ["Mr Eslam", "مستر اسلام"],
-  "url": "https://mreslam.cc.cd/"
-}
-</script>
 
   <meta name="author" content="مستر اسلام" />
 
