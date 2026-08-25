@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { FileText, Download, Video, Search, Filter, Sparkles, Loader2 } from 'lucide-react'
 import { YEARS, GOVERNORATES } from '../data/dummyData'
 import { fetchPastExamsFromSupabase } from '../lib/supabase'
+import SEO from "../components/SEO";
 
 export default function PastExamsPage() {
   const [selectedYearId, setSelectedYearId] = useState('all')
@@ -32,7 +33,13 @@ export default function PastExamsPage() {
   })
 
   return (
+    <SEO
+  title="امتحانات الرياضيات السابقة | مستر اسلام سعيد"
+  description="امتحانات وأسئلة الرياضيات السابقة للتدريب والمراجعة لطلاب البكالوريا المصرية والثانوية العامة مع مستر اسلام سعيد."
+  canonical="https://mreslam.cc.cd/exams"
+/>
     <div className="min-h-screen py-10 px-4 sm:px-8 max-w-7xl mx-auto space-y-10 font-ibm">
+
       {/* Page Header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import SEO from "../components/SEO";
 import { Link } from 'react-router-dom'
 import {
     BookOpen,
@@ -111,6 +112,11 @@ export default function Books() {
     }
 
     return (
+        <SEO
+  title="كتب الرياضيات | مستر اسلام سعيد"
+  description="كتب ومذكرات الرياضيات Math للمراجعة والتأسيس والاستعداد للامتحانات مع مستر اسلام سعيد."
+  canonical="https://mreslam.cc.cd/books"
+/>
         <section className="min-h-screen px-4 sm:px-6 py-10 sm:py-14 font-ibm">
 
             <div className="max-w-7xl mx-auto space-y-10">
