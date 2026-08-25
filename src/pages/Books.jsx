@@ -114,9 +114,9 @@ export default function Books() {
     return (
 
         <section className="min-h-screen px-4 sm:px-6 py-10 sm:py-14 font-ibm">
-        <SEO
-  title="كتب الرياضيات | مستر اسلام سعيد"
-  description="كتب ومذكرات الرياضيات Math للمراجعة والتأسيس والاستعداد للامتحانات مع مستر اسلام سعيد."
+<SEO
+  title="كتب ومذكرات الرياضيات Math | مستر اسلام سعيد"
+  description="كتب ومذكرات الرياضيات Math لطلاب البكالوريا المصرية والثانوية العامة، للمراجعة والتأسيس والاستعداد للامتحانات مع مستر اسلام سعيد."
   canonical="https://mreslam.cc.cd/books"
 />
             <div className="max-w-7xl mx-auto space-y-10">
