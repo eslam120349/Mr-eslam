@@ -33,12 +33,13 @@ export default function PastExamsPage() {
   })
 
   return (
+
+    <div className="min-h-screen py-10 px-4 sm:px-8 max-w-7xl mx-auto space-y-10 font-ibm">
     <SEO
   title="امتحانات الرياضيات السابقة | مستر اسلام سعيد"
   description="امتحانات وأسئلة الرياضيات السابقة للتدريب والمراجعة لطلاب البكالوريا المصرية والثانوية العامة مع مستر اسلام سعيد."
   canonical="https://mreslam.cc.cd/exams"
 />
-    <div className="min-h-screen py-10 px-4 sm:px-8 max-w-7xl mx-auto space-y-10 font-ibm">
 
       {/* Page Header */}
       <motion.div
