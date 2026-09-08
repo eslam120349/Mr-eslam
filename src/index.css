@@ -29,8 +29,15 @@ body {
 }
 
 @keyframes slideInLeft {
-  from { transform: scaleY(0); opacity: 0; }
-  to { transform: scaleY(1); opacity: 1; }
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
 }
 
 .animate-slideInLeft {
@@ -38,9 +45,12 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-25px) rotate(12deg);
   }
@@ -58,3 +68,495 @@ body {
   }
 }
 
+
+/* =========================================================
+   MR. ESLAM — MATHEMATICS INTRO
+   ========================================================= */
+
+.math-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(15, 131, 234, 0.18),
+      transparent 34%),
+    linear-gradient(135deg,
+      #062544 0%,
+      #093a6b 52%,
+      #0159b0 100%);
+}
+
+/* Mathematical grid */
+.math-intro-grid {
+  position: absolute;
+  inset: -20%;
+
+  opacity: 0.28;
+
+  background-image:
+    linear-gradient(rgba(114, 184, 253, 0.11) 1px,
+      transparent 1px),
+    linear-gradient(90deg,
+      rgba(114, 184, 253, 0.11) 1px,
+      transparent 1px);
+
+  background-size: 52px 52px;
+
+  transform:
+    perspective(900px) rotateX(58deg) scale(1.4);
+
+  transform-origin: center bottom;
+
+  mask-image:
+    linear-gradient(to top,
+      black 5%,
+      transparent 75%);
+}
+
+/* Central mathematical orbit */
+.math-intro::before {
+  content: '';
+
+  position: absolute;
+
+  width: min(52vw, 620px);
+  height: min(52vw, 620px);
+
+  border: 1px solid rgba(114, 184, 253, 0.18);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 80px rgba(114, 184, 253, 0.025),
+    0 0 0 160px rgba(114, 184, 253, 0.018);
+}
+
+.math-intro::after {
+  content: '';
+
+  position: absolute;
+
+  width: 1px;
+  height: 72vh;
+
+  background:
+    linear-gradient(to bottom,
+      transparent,
+      rgba(114, 184, 253, 0.28),
+      transparent);
+}
+
+/* Math symbols */
+.math-intro-symbol {
+  position: absolute;
+
+  color: #72b8fd;
+
+  font-family: "Times New Roman", serif;
+
+  font-weight: 700;
+
+  font-size: clamp(18px,
+      2.3vw,
+      34px);
+
+  text-shadow:
+    0 0 24px rgba(63,
+      156,
+      245,
+      0.35);
+
+  user-select: none;
+}
+
+/* Equations */
+.math-intro-equation {
+  position: absolute;
+
+  color: rgba(234,
+      244,
+      255,
+      0.24);
+
+  font-family:
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(11px,
+      1vw,
+      15px);
+
+  letter-spacing: 0.08em;
+
+  user-select: none;
+}
+
+.equation-a {
+  left: 7%;
+  top: 19%;
+
+  transform: rotate(-8deg);
+}
+
+.equation-b {
+  right: 7%;
+  bottom: 21%;
+
+  transform: rotate(7deg);
+}
+
+/* Center */
+.math-intro-center {
+  position: relative;
+  z-index: 2;
+
+  width: min(92vw, 820px);
+
+  text-align: center;
+}
+
+/* Sigma logo */
+.math-intro-mark {
+  width: 66px;
+  height: 66px;
+
+  margin:
+    0 auto 18px;
+
+  display: grid;
+  place-items: center;
+
+  border:
+    1px solid rgba(114, 184, 253, 0.6);
+
+  border-radius: 50%;
+
+  color: white;
+
+  background:
+    rgba(6, 37, 68, 0.42);
+
+  box-shadow:
+    0 0 0 8px rgba(114, 184, 253, 0.035),
+    0 0 35px rgba(15, 131, 234, 0.18);
+
+  font-family:
+    "Times New Roman",
+    serif;
+
+  font-size: 31px;
+}
+
+/* MR. E */
+.math-intro-name {
+  display: flex;
+
+  justify-content: center;
+  align-items: baseline;
+
+  direction: ltr;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(58px,
+      11vw,
+      128px);
+
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  letter-spacing: -0.065em;
+}
+
+.math-intro-char-mask {
+  display: inline-block;
+
+  overflow: hidden;
+
+  padding: 0 0.015em;
+}
+
+.math-intro-char {
+  display: inline-block;
+
+  background:
+    linear-gradient(180deg,
+      #ffffff 0%,
+      #d3e9ff 58%,
+      #72b8fd 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+/* Arabic name */
+.math-intro-arabic {
+  margin-top: 18px;
+
+  color: #d3e9ff;
+
+  font-family:
+    "IBM Plex Sans Arabic",
+    sans-serif;
+
+  font-size:
+    clamp(19px,
+      2.4vw,
+      30px);
+
+  font-weight: 700;
+}
+
+/* Line */
+.math-intro-line {
+  width:
+    min(320px,
+      55vw);
+
+  height: 2px;
+
+  margin:
+    17px auto 14px;
+
+  transform-origin: center;
+
+  background:
+    linear-gradient(90deg,
+      transparent,
+      #3f9cf5 25%,
+      white 50%,
+      #3f9cf5 75%,
+      transparent);
+
+  box-shadow:
+    0 0 18px rgba(63,
+      156,
+      245,
+      0.45);
+}
+
+/* Tagline */
+.math-intro-tagline {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  color:
+    rgba(234,
+      244,
+      255,
+      0.72);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size:
+    clamp(9px,
+      1vw,
+      12px);
+
+  font-weight: 700;
+
+  letter-spacing: 0.19em;
+}
+
+.math-intro-tagline span:nth-child(2),
+.math-intro-tagline span:nth-child(4) {
+  color: #72b8fd;
+}
+
+/* Footer */
+.math-intro-footer {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  color:
+    rgba(234,
+      244,
+      255,
+      0.55);
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+/* Progress */
+.math-intro-progress {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 3px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255,
+      255,
+      255,
+      0.08);
+}
+
+.math-intro-progress>div {
+  width: 100%;
+  height: 100%;
+
+  transform-origin: left center;
+
+  background:
+    linear-gradient(90deg,
+      #0f83ea,
+      #72b8fd,
+      #ffffff);
+
+  box-shadow:
+    0 0 20px rgba(114,
+      184,
+      253,
+      0.7);
+}
+
+/* Corner marks */
+.math-intro-corner {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+
+  border-color:
+    rgba(114,
+      184,
+      253,
+      0.6);
+
+  border-style: solid;
+}
+
+.math-intro-corner.tl {
+  top: 24px;
+  left: 24px;
+
+  border-width:
+    1px 0 0 1px;
+}
+
+.math-intro-corner.tr {
+  top: 24px;
+  right: 24px;
+
+  border-width:
+    1px 1px 0 0;
+}
+
+.math-intro-corner.bl {
+  bottom: 24px;
+  left: 24px;
+
+  border-width:
+    0 0 1px 1px;
+}
+
+.math-intro-corner.br {
+  bottom: 24px;
+  right: 24px;
+
+  border-width:
+    0 1px 1px 0;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+
+  .math-intro-name {
+    font-size:
+      clamp(52px,
+        19vw,
+        82px);
+  }
+
+  .math-intro-mark {
+    width: 54px;
+    height: 54px;
+
+    font-size: 25px;
+  }
+
+  .math-intro-equation {
+    display: none;
+  }
+
+  .math-intro-symbol:nth-of-type(n + 8) {
+    display: none;
+  }
+
+  .math-intro-footer {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+
+    font-size: 7px;
+  }
+
+  .math-intro-corner {
+    width: 20px;
+    height: 20px;
+  }
+
+  .math-intro-corner.tl,
+  .math-intro-corner.tr {
+    top: 18px;
+  }
+
+  .math-intro-corner.bl,
+  .math-intro-corner.br {
+    bottom: 18px;
+  }
+
+  .math-intro-corner.tl,
+  .math-intro-corner.bl {
+    left: 18px;
+  }
+
+  .math-intro-corner.tr,
+  .math-intro-corner.br {
+    right: 18px;
+  }
+}

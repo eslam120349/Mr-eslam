@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -7,6 +7,7 @@ import Footer from './components/Footer.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
 import FloatingMathBg from './components/FloatingMathBg.jsx'
 import ProtectedAdminRoute from './components/ProtectedAdminRoute.jsx'
+import Intro from './components/Intro.jsx'
 
 import HomePage from './pages/HomePage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
@@ -16,8 +17,9 @@ import LessonDetailPage from './pages/LessonDetailPage.jsx'
 import PastExamsPage from './pages/PastExamsPage.jsx'
 import AdminDashboardPage from './pages/AdminDashboardPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
-import Books from "./pages/Books";
-import BookReader from "./pages/BookReader";
+import Books from "./pages/Books"
+import BookReader from "./pages/BookReader"
+
 
 // Helper component to scroll to top on route change
 function ScrollToTop() {
@@ -29,6 +31,7 @@ function ScrollToTop() {
 
   return null
 }
+
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -44,14 +47,38 @@ function AnimatedRoutes() {
         className="w-full flex-1"
       >
         <Routes location={location} key={location.pathname}>
+
           <Route path="/" element={<HomePage />} />
+
           <Route path="/login" element={<LoginPage />} />
+
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/years/:yearId" element={<YearDetailPage />} />
-          <Route path="/lessons/:lessonId" element={<LessonDetailPage />} />
-          <Route path="/exams" element={<PastExamsPage />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/books/:id" element={<BookReader />} />
+
+          <Route
+            path="/years/:yearId"
+            element={<YearDetailPage />}
+          />
+
+          <Route
+            path="/lessons/:lessonId"
+            element={<LessonDetailPage />}
+          />
+
+          <Route
+            path="/exams"
+            element={<PastExamsPage />}
+          />
+
+          <Route
+            path="/books"
+            element={<Books />}
+          />
+
+          <Route
+            path="/books/:id"
+            element={<BookReader />}
+          />
+
           <Route
             path="/admin"
             element={
@@ -60,76 +87,237 @@ function AnimatedRoutes() {
               </ProtectedAdminRoute>
             }
           />
+
           {/* 404 - صفحة مش موجودة */}
-          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="*"
+            element={<NotFoundPage />}
+          />
+
         </Routes>
       </motion.div>
     </AnimatePresence>
   )
 }
 
+
 export default function App() {
-  // Global Anti-Right-Click & Anti-DevTools keyboard shortcuts lock
+
+  // =====================================================
+  // INTRO STATE
+  // =====================================================
+
+  const [introDone, setIntroDone] = useState(() => {
+    try {
+      return sessionStorage.getItem(
+        'mr-eslam-intro-seen'
+      ) === '1'
+    } catch {
+      return false
+    }
+  })
+
+
+  const handleIntroComplete = () => {
+
+    try {
+      sessionStorage.setItem(
+        'mr-eslam-intro-seen',
+        '1'
+      )
+    } catch {
+      // Ignore storage restrictions
+    }
+
+    setIntroDone(true)
+  }
+
+
+  // =====================================================
+  // GLOBAL SECURITY
+  // =====================================================
+
   useEffect(() => {
+
     const handleGlobalContextMenu = (e) => {
       e.preventDefault()
       e.stopPropagation()
       return false
     }
 
+
     const handleGlobalKeyDown = (e) => {
+
       const key = e.key
       const code = e.keyCode || e.which
 
-      // Block F12, F11
-      if (code === 123 || key === 'F12' || code === 122 || key === 'F11') {
-        e.preventDefault()
-        e.stopPropagation()
-        return false
-      }
 
-      // Block Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+      // F12 / F11
       if (
-        e.ctrlKey &&
-        e.shiftKey &&
-        (key === 'I' || key === 'i' || key === 'J' || key === 'j' || key === 'C' || key === 'c')
+        code === 123 ||
+        key === 'F12' ||
+        code === 122 ||
+        key === 'F11'
       ) {
         e.preventDefault()
         e.stopPropagation()
         return false
       }
 
-      // Block Ctrl+U (View Source), Ctrl+S (Save Page)
-      if (e.ctrlKey && (key === 'u' || key === 'U' || key === 's' || key === 'S')) {
+
+      // Ctrl + Shift + I / J / C
+      if (
+        e.ctrlKey &&
+        e.shiftKey &&
+        (
+          key === 'I' ||
+          key === 'i' ||
+          key === 'J' ||
+          key === 'j' ||
+          key === 'C' ||
+          key === 'c'
+        )
+      ) {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+
+
+      // Ctrl + U / S
+      if (
+        e.ctrlKey &&
+        (
+          key === 'u' ||
+          key === 'U' ||
+          key === 's' ||
+          key === 'S'
+        )
+      ) {
         e.preventDefault()
         e.stopPropagation()
         return false
       }
     }
 
-    window.addEventListener('contextmenu', handleGlobalContextMenu, true)
-    document.addEventListener('contextmenu', handleGlobalContextMenu, true)
-    window.addEventListener('keydown', handleGlobalKeyDown, true)
-    document.addEventListener('keydown', handleGlobalKeyDown, true)
+
+    window.addEventListener(
+      'contextmenu',
+      handleGlobalContextMenu,
+      true
+    )
+
+    document.addEventListener(
+      'contextmenu',
+      handleGlobalContextMenu,
+      true
+    )
+
+    window.addEventListener(
+      'keydown',
+      handleGlobalKeyDown,
+      true
+    )
+
+    document.addEventListener(
+      'keydown',
+      handleGlobalKeyDown,
+      true
+    )
+
 
     return () => {
-      window.removeEventListener('contextmenu', handleGlobalContextMenu, true)
-      document.removeEventListener('contextmenu', handleGlobalContextMenu, true)
-      window.removeEventListener('keydown', handleGlobalKeyDown, true)
-      document.removeEventListener('keydown', handleGlobalKeyDown, true)
+
+      window.removeEventListener(
+        'contextmenu',
+        handleGlobalContextMenu,
+        true
+      )
+
+      document.removeEventListener(
+        'contextmenu',
+        handleGlobalContextMenu,
+        true
+      )
+
+      window.removeEventListener(
+        'keydown',
+        handleGlobalKeyDown,
+        true
+      )
+
+      document.removeEventListener(
+        'keydown',
+        handleGlobalKeyDown,
+        true
+      )
     }
+
   }, [])
 
+
+  // =====================================================
+  // APP
+  // =====================================================
+
   return (
+
     <BrowserRouter>
+
       <ScrollToTop />
-      <div className="flex flex-col justify-between h-full w-full relative min-h-screen bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 smooth font-ibm selection:bg-dodger-500 selection:text-white">
+
+
+      {/* ===============================================
+          MR. ESLAM OPENING
+         =============================================== */}
+
+      {!introDone && (
+        <Intro
+          onComplete={handleIntroComplete}
+        />
+      )}
+
+
+      {/* ===============================================
+          WEBSITE
+         =============================================== */}
+
+      <div
+        className="
+          flex
+          flex-col
+          justify-between
+          h-full
+          w-full
+          relative
+          min-h-screen
+
+          bg-slate-50
+          dark:bg-gray-900
+
+          text-gray-900
+          dark:text-gray-100
+
+          smooth
+          font-ibm
+
+          selection:bg-dodger-500
+          selection:text-white
+        "
+      >
+
         <FloatingMathBg />
+
         <Navbar />
+
         <AnimatedRoutes />
+
         <Footer />
+
         <WhatsAppButton />
+
       </div>
+
     </BrowserRouter>
   )
 }
